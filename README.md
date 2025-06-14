@@ -30,3 +30,10 @@
 *   **Database:** **PostgreSQL** (comes with Supabase).
 *   **Email Service:** **Resend** or **SendGrid**. For sending transactional booking confirmation emails.
 *   **Deployment:** **Vercel** for the front-end and **Supabase** for the backend/database.
+## 5. Current Project Status
+
+**Last Updated: June 14, 2025**
+
+*   **Phase 1: The Foundation - COMPLETED**
+    *   The initial setup of the Next.js application, integration with Supabase, the core database schema, a basic (unstyled) public booking form, and a rudimentary admin area to view bookings are all complete. The end-to-end booking flow is functional.
+    *   The project is now proceeding to **Phase 2: The Polished Product**.
