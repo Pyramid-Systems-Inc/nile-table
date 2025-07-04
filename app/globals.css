@@ -1,105 +1,36 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Cinzel:wght@400;500;600&display=swap');
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-/* The Nile's Table - Base Styles */
-@layer base {
-    html {
-        scroll-behavior: smooth;
+/* Custom Animations */
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0px);
     }
 
-    body {
-        @apply font-sans text-gray-900 bg-white;
-        font-feature-settings: 'kern' 1, 'liga' 1;
-    }
-
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-        @apply font-serif;
-    }
-
-    /* Custom scrollbar */
-    ::-webkit-scrollbar {
-        width: 8px;
-    }
-
-    ::-webkit-scrollbar-track {
-        @apply bg-gray-100;
-    }
-
-    ::-webkit-scrollbar-thumb {
-        @apply bg-nile-navy rounded-full;
-    }
-
-    ::-webkit-scrollbar-thumb:hover {
-        @apply bg-nile-navy-light;
+    50% {
+        transform: translateY(-20px);
     }
 }
 
-/* The Nile's Table - Component Styles */
-@layer components {
+@keyframes glow {
 
-    /* Button Styles */
-    .btn-primary {
-        @apply bg-gradient-to-r from-yellow-400 to-yellow-500 text-blue-900 font-semibold px-8 py-4 rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 ease-out;
+    0%,
+    100% {
+        box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
     }
 
-    .btn-secondary {
-        @apply border-2 border-yellow-400 text-yellow-400 font-semibold px-8 py-4 rounded-lg hover:bg-yellow-400 hover:text-blue-900 transition-all duration-300 ease-out;
+    50% {
+        box-shadow: 0 0 40px rgba(255, 215, 0, 0.6);
     }
+}
 
-    .btn-outline {
-        @apply border-2 border-blue-900 text-blue-900 font-semibold px-6 py-3 rounded-lg hover:bg-blue-900 hover:text-white transition-all duration-300 ease-out;
-    }
+.animate-float {
+    animation: float 6s ease-in-out infinite;
+}
 
-    /* Card Styles */
-    .card-luxury {
-        @apply bg-white rounded-xl shadow-luxury p-6 hover:shadow-xl transition-shadow duration-300;
-    }
-
-    /* Form Styles */
-    .form-input {
-        @apply w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-nile-gold focus:border-nile-gold transition-colors duration-200;
-    }
-
-    .form-label {
-        @apply block text-sm font-medium text-gray-700 mb-2;
-    }
-
-    /* Text Styles */
-    .text-hero {
-        @apply text-hero font-display font-semibold text-white leading-tight;
-    }
-
-    .text-display {
-        @apply text-display font-serif font-semibold text-nile-navy;
-    }
-
-    .text-elegant {
-        @apply text-lg text-gray-600 leading-relaxed;
-    }
-
-    /* Layout Styles */
-    .section-padding {
-        @apply py-16 px-4 sm:px-6 lg:px-8;
-    }
-
-    .container-luxury {
-        @apply max-w-7xl mx-auto;
-    }
-
-    /* Animation Classes */
-    .animate-on-scroll {
-        @apply opacity-0 translate-y-8 transition-all duration-800 ease-out;
-    }
-
-    .animate-on-scroll.visible {
-        @apply opacity-100 translate-y-0;
-    }
+.animate-glow {
+    animation: glow 3s ease-in-out infinite;
 }
