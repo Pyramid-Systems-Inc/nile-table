@@ -12,6 +12,9 @@ export default function Navbar() {
   const [lastScrollY, setLastScrollY] = useState(0);
   const pathname = usePathname();
 
+  // Check if we're on the home page (which has a dark hero background)
+  const isHomePage = pathname === '/';
+
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
@@ -46,7 +49,7 @@ export default function Navbar() {
         y: isVisible ? 0 : -100,
         transition: { duration: 0.3, ease: 'easeInOut' }
       }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled || !isHomePage
         ? 'bg-white/95 backdrop-blur-md shadow-xl border-b border-gray-100'
         : 'bg-transparent'
         }`}
@@ -59,11 +62,11 @@ export default function Navbar() {
               <span className="text-blue-900 font-serif font-bold text-xl">N</span>
             </div>
             <div className="hidden sm:block">
-              <h1 className={`font-serif text-xl font-semibold ${isScrolled ? 'text-blue-900' : 'text-white'
+              <h1 className={`font-serif text-xl font-semibold ${isScrolled || !isHomePage ? 'text-blue-900' : 'text-white'
                 }`}>
-                The Nile's Table
+                The Nile&apos;s Table
               </h1>
-              <p className={`text-sm ${isScrolled ? 'text-gray-600' : 'text-white/80'
+              <p className={`text-sm ${isScrolled || !isHomePage ? 'text-gray-600' : 'text-white/80'
                 }`}>
                 Ancient Tradition Reimagined
               </p>
@@ -80,7 +83,7 @@ export default function Navbar() {
                   href={item.href}
                   className={`relative font-medium transition-all duration-300 hover:text-yellow-400 ${isActive
                     ? 'text-yellow-400'
-                    : isScrolled ? 'text-blue-900' : 'text-white'
+                    : isScrolled || !isHomePage ? 'text-blue-900' : 'text-white'
                     } ${isActive ? 'after:absolute after:bottom-[-4px] after:left-0 after:w-full after:h-0.5 after:bg-yellow-400 after:rounded-full' : ''}`}
                 >
                   {item.label}
@@ -102,7 +105,7 @@ export default function Navbar() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className={`lg:hidden p-2 rounded-lg transition-colors ${isScrolled ? 'text-blue-900' : 'text-white'
+            className={`lg:hidden p-2 rounded-lg transition-colors ${isScrolled || !isHomePage ? 'text-blue-900' : 'text-white'
               }`}
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -134,8 +137,8 @@ export default function Navbar() {
                       key={item.href}
                       href={item.href}
                       className={`font-medium py-3 px-4 rounded-lg transition-all duration-300 ${isActive
-                          ? 'bg-yellow-100 text-yellow-600 border-l-4 border-yellow-400'
-                          : 'text-blue-900 hover:text-yellow-400 hover:bg-yellow-50'
+                        ? 'bg-yellow-100 text-yellow-600 border-l-4 border-yellow-400'
+                        : 'text-blue-900 hover:text-yellow-400 hover:bg-yellow-50'
                         }`}
                       onClick={() => setIsMobileMenuOpen(false)}
                     >
