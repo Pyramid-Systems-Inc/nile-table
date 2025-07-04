@@ -18,23 +18,9 @@ const FloatingElement = ({ children, delay = 0 }: { children: React.ReactNode; d
   );
 };
 
-// Parallax scroll hook
-const useParallax = () => {
-  const [scrollY, setScrollY] = useState(0);
-
-  useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  return scrollY;
-};
-
 export default function HomePage() {
   const [isVisible, setIsVisible] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const scrollY = useParallax();
 
   useEffect(() => {
     setIsVisible(true);
@@ -51,10 +37,7 @@ export default function HomePage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section
-        className="h-screen flex items-center justify-center bg-gradient-to-br from-blue-900 to-blue-800 text-white relative overflow-hidden"
-        style={{ transform: `translateY(${scrollY * 0.5}px)` }}
-      >
+      <section className="h-screen flex items-center justify-center bg-gradient-to-br from-blue-900 to-blue-800 text-white relative overflow-hidden">
         {/* Interactive background pattern */}
         <div className="absolute inset-0 opacity-10">
           <FloatingElement delay={0}>
