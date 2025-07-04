@@ -72,16 +72,21 @@ export default function Navbar() {
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-8">
-            {navItems.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={`font-medium transition-colors duration-200 hover:text-yellow-400 ${isScrolled ? 'text-blue-900' : 'text-white'
-                  }`}
-              >
-                {item.label}
-              </Link>
-            ))}
+            {navItems.map((item) => {
+              const isActive = pathname === item.href;
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={`relative font-medium transition-all duration-300 hover:text-yellow-400 ${isActive
+                    ? 'text-yellow-400'
+                    : isScrolled ? 'text-blue-900' : 'text-white'
+                    } ${isActive ? 'after:absolute after:bottom-[-4px] after:left-0 after:w-full after:h-0.5 after:bg-yellow-400 after:rounded-full' : ''}`}
+                >
+                  {item.label}
+                </Link>
+              );
+            })}
           </div>
 
           {/* Book a Table Button */}
@@ -122,16 +127,22 @@ export default function Navbar() {
           >
             <div className="max-w-7xl mx-auto px-6 py-4">
               <div className="flex flex-col space-y-4">
-                {navItems.map((item) => (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    className="text-blue-900 font-medium py-2 hover:text-yellow-400 transition-colors"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    {item.label}
-                  </Link>
-                ))}
+                {navItems.map((item) => {
+                  const isActive = pathname === item.href;
+                  return (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      className={`font-medium py-3 px-4 rounded-lg transition-all duration-300 ${isActive
+                          ? 'bg-yellow-100 text-yellow-600 border-l-4 border-yellow-400'
+                          : 'text-blue-900 hover:text-yellow-400 hover:bg-yellow-50'
+                        }`}
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      {item.label}
+                    </Link>
+                  );
+                })}
                 <Link
                   href="/book"
                   className="bg-gradient-to-r from-yellow-400 to-yellow-500 text-blue-900 font-semibold px-6 py-3 rounded-lg hover:from-yellow-500 hover:to-yellow-600 transition-all duration-300 shadow-lg w-full text-center mt-4"
