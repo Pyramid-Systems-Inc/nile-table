@@ -1,9 +1,9 @@
 // app/layout.tsx
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import "./globals.css";
-import Navbar from "../components/Navbar"; // Adjust path if necessary
 import Footer from "../components/Footer"; // Adjust path if necessary
+import Navbar from "../components/Navbar"; // Adjust path if necessary
+import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,7 +21,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <Navbar />
-        <main style={{ minHeight: 'calc(100vh - 150px)', padding: '1rem' }}> {/* Basic styling to push footer down */}
+        <main className="relative">
           {children}
         </main>
         <Footer />
